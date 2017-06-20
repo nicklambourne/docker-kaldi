@@ -59,6 +59,7 @@ WORKDIR /kaldi/tools
 RUN chmod +x extras/* && \
     ./extras/install_liblbfgs.sh && \
     ./extras/install_srilm.sh && \
+    chmod +x env.sh && \
     ./env.sh
 
 #----- Cleaning up package manager
