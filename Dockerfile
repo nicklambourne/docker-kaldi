@@ -25,7 +25,8 @@ RUN apt-get update && apt-get install -y  \
     bzip2 \
     gsl-bin libgsl0ldbl \
     libatlas3-base \
-    glpk-utils
+    glpk-utils \
+    libglib2.0-dev
 
 RUN apt-get update && apt-get install -y  \
     python2.7 \
