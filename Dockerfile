@@ -56,7 +56,8 @@ COPY srilm-1.7.2.tar.gz /kaldi/tools/srilm.tar.gz
 
 WORKDIR /kaldi/tools
 
-RUN ./extras/install_liblbfgs.sh && \
+RUN chmod +x extras/* && \
+    ./extras/install_liblbfgs.sh && \
     ./extras/install_srilm.sh && \
     ./env.sh
 
