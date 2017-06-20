@@ -50,8 +50,7 @@ RUN echo "===> install Kaldi (latest from source)"  && \
     cd /kaldi/src && ./configure --shared && \
     sed -i '/-g # -O0 -DKALDI_PARANOID/c\-O3 -DNDEBUG' kaldi.mk && \
     make depend && make && \
-    cd /kaldi/src/online && make depend && make && \
-    cd /kaldi/src/gst-plugin && make depend && make
+    cd /kaldi/src/online && make depend && make
 
 ADD srilm-1.7.2.tar.gz /kaldi/tools/srilm.tar.gz
 
