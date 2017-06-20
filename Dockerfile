@@ -39,10 +39,7 @@ RUN apt-get update && apt-get install -y  \
     ln -s /usr/bin/python2.7 /usr/bin/python ; ln -s -f bash /bin/sh
 
 #------ Kaldi ----
-
-RUN mkdir /kaldi
-
-WORKDIR /kaldi
+WORKDIR /
 
 RUN echo "===> install Kaldi (latest from source)"  && \
     git clone https://github.com/kaldi-asr/kaldi && \
