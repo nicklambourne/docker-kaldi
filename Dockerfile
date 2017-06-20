@@ -52,7 +52,7 @@ RUN echo "===> install Kaldi (latest from source)"  && \
     make depend && make && \
     cd /kaldi/src/online && make depend && make
 
-ADD srilm-1.7.2.tar.gz /kaldi/tools/srilm.tar.gz
+COPY srilm-1.7.2.tar.gz /kaldi/tools/srilm.tar.gz
 
 WORKDIR /kaldi/tools
 
