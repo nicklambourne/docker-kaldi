@@ -56,7 +56,8 @@ COPY srilm-1.7.2.tar.gz /kaldi/tools/srilm.tgz
 
 WORKDIR /kaldi/tools
 
-RUN chmod +x extras/* && \
+RUN apt-get install gawk && \
+    chmod +x extras/* && \
     ./extras/install_liblbfgs.sh && \
     ./extras/install_srilm.sh && \
     chmod +x env.sh && \
