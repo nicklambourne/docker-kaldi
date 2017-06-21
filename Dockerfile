@@ -68,4 +68,14 @@ RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
+WORKDIR /tmp
+
+# Add python 3.6
+RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
+    tar xvf Python-3.6.1.tgz && \
+    cd Python-3.6.1 && \
+    ./configure --enable-optimizations && \
+    make -j8 && \
+    sudo make altinstall
+
 WORKDIR /kaldi
