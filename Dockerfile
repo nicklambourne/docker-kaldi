@@ -67,3 +67,5 @@ RUN apt-get install gawk && \
 RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
+
+WORKDIR /kaldi
