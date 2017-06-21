@@ -63,11 +63,6 @@ RUN apt-get install gawk && \
     chmod +x env.sh && \
     source ./env.sh
 
-#----- Cleaning up package manager
-RUN apt-get clean autoclean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
-
 WORKDIR /tmp
 
 # Add python 3.6
@@ -92,5 +87,10 @@ RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
 RUN apt-get install -y nodejs build-essential npm && \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g xml-js
+
+#----- Cleaning up package manager
+RUN apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /kaldi
