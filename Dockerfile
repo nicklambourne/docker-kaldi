@@ -76,6 +76,6 @@ RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
     cd Python-3.6.1 && \
     ./configure --enable-optimizations && \
     make -j8 && \
-    sudo make altinstall
+    make altinstall
 
 WORKDIR /kaldi
