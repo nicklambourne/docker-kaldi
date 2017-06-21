@@ -61,7 +61,7 @@ RUN apt-get install gawk && \
     ./extras/install_liblbfgs.sh && \
     ./extras/install_srilm.sh && \
     chmod +x env.sh && \
-    ./env.sh
+    source ./env.sh
 
 #----- Cleaning up package manager
 RUN apt-get clean autoclean && \
