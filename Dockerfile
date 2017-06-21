@@ -83,4 +83,10 @@ RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_lin
     tar xzf task_1.3.1_linux_x64.tar.gz && \
     mv task /usr/local/bin/task
 
+# Add jq
+RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
+    tar xzf jq-linux64 && \
+    chmod +x jq-linux64 && \
+    mv jq-linux64 /usr/local/bin/jq
+
 WORKDIR /kaldi
