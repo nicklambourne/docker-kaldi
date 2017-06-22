@@ -88,6 +88,11 @@ RUN apt-get install -y nodejs build-essential npm && \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g xml-js
 
+# Add moutsache templates as mo
+RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo && \
+    chmod +x mo && \
+    mv mo /usr/local/bin
+
 #----- Cleaning up package manager
 RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
