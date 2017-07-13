@@ -98,4 +98,6 @@ RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /kaldi
+RUN git clone https://github.com/jotia1/asr-daan.git /kaldi-helpers
+
+WORKDIR /kaldi-helpers
