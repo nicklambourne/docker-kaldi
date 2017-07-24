@@ -98,6 +98,6 @@ RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN git clone --branch refactor-for-release https://github.com/CoEDL/kaldi-helpers.git
+RUN git clone --branch refactor-for-release https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
 
 WORKDIR /kaldi-helpers
