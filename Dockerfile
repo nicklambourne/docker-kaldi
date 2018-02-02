@@ -98,6 +98,7 @@ RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
+# pwd forces git clone to run every time (i.e. not re-used from Docker cache)
+RUN pwd && git clone https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
 
 WORKDIR /kaldi-helpers
