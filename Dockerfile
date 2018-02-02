@@ -26,8 +26,7 @@ RUN apt-get update && apt-get install -y  \
     gsl-bin libgsl0ldbl \
     libatlas3-base \
     glpk-utils \
-    libglib2.0-dev \
-    sox
+    libglib2.0-dev
 
 RUN apt-get update && apt-get install -y  \
     python2.7 \
@@ -79,6 +78,9 @@ RUN apt-get install -y python3-dev python3-pip && \
     pip3 install numpy && \
     pip3.6 install git+https://github.com/jiaaro/pydub.git@master && \
     pip3.6 install git+https://github.com/dopefishh/pympi.git@master
+
+# Add sox
+RUN apt-get install sox
 
 # Add a task runner
 RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
