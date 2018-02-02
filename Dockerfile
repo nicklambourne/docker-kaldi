@@ -26,7 +26,8 @@ RUN apt-get update && apt-get install -y  \
     gsl-bin libgsl0ldbl \
     libatlas3-base \
     glpk-utils \
-    libglib2.0-dev
+    libglib2.0-dev \
+    sox
 
 RUN apt-get update && apt-get install -y  \
     python2.7 \
