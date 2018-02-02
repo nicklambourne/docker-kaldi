@@ -102,7 +102,10 @@ RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-# pwd forces git clone to run every time (i.e. not re-used from Docker cache)
 RUN pwd && git clone https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
 
 WORKDIR /kaldi-helpers
+
+# Add random number generator to skip Docker building cache
+ADD http://www.random.org/strings/?num=10&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new /uuid
+RUN git pull
