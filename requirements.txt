@@ -1,10 +1,6 @@
-numpy 
+numpy
 pydub
-pympi 
-wave 
-subprocess
-threading
-multiprocessing
-shutil
+pympi-ling
+wave
 xml
 platform
