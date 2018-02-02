@@ -1,0 +1,10 @@
+numpy 
+pydub
+pympi 
+wave 
+subprocess
+threading
+multiprocessing
+shutil
+xml
+platform
