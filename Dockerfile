@@ -73,6 +73,10 @@ RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
     make -j8 && \
     make altinstall
 
+# Add python packages and their dependencies
+RUN apt-get install -y python-dev && \
+    pip install -r requirements.txt
+
 # Add a task runner
 RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
     tar xzf task_1.3.1_linux_x64.tar.gz && \
