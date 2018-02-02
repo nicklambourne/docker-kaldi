@@ -2,5 +2,3 @@ numpy
 pydub
 pympi-ling
 wave
-xml
-platform
