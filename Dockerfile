@@ -76,7 +76,8 @@ RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
 # Add python packages and their dependencies
 RUN apt-get install -y python-dev python3-pip && \
     pip3 install numpy && \
-    pip3.6 install pydub pympi-ling
+    pip3.6 install git+https://github.com/jiaaro/pydub.git@master && \
+    pip3.6 install git+https://github.com/dopefishh/pympi.git@master
 
 # Add a task runner
 RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
