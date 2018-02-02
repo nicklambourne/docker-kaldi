@@ -74,7 +74,7 @@ RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
     make altinstall
 
 # Add python packages and their dependencies
-RUN apt-get install -y python-dev python3-pip && \
+RUN apt-get install -y python3-dev python3-pip && \
     pip3 install numpy && \
     pip3.6 install git+https://github.com/jiaaro/pydub.git@master && \
     pip3.6 install git+https://github.com/dopefishh/pympi.git@master
