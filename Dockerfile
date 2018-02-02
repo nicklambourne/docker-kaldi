@@ -80,7 +80,7 @@ RUN apt-get install -y python3-dev python3-pip && \
     pip3.6 install git+https://github.com/dopefishh/pympi.git@master
 
 # Add sox
-RUN apt-get install sox
+RUN apt-get update && apt-get install -y sox
 
 # Add a task runner
 RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
