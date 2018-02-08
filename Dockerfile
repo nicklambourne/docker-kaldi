@@ -75,7 +75,7 @@ RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
 
 # Add python packages and their dependencies
 RUN apt-get install -y python3-dev python3-pip && \
-    pip3 install numpy pympi-ling && \
+    pip3 install numpy pympi-ling praatio && \
     pip3.6 install git+https://github.com/jiaaro/pydub.git@master && \
     pip3.6 install git+https://github.com/dopefishh/pympi.git@master
 
@@ -101,6 +101,13 @@ RUN apt-get install -y nodejs build-essential npm && \
 RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo && \
     chmod +x mo && \
     mv mo /usr/local/bin
+
+
+# Add graphviz
+RUN apt-get update && apt-get install -y graphviz
+
+
+# Add praatio
 
 #----- Cleaning up package manager
 RUN apt-get clean autoclean && \
