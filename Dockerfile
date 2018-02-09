@@ -104,7 +104,7 @@ RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/
 
 # Add graphviz
 RUN apt-get update && apt-get install -y \
-    graphviz
+    graphviz \
     vim \
     nano
 
