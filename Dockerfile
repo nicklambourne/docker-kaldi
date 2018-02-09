@@ -102,12 +102,8 @@ RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/
     chmod +x mo && \
     mv mo /usr/local/bin
 
-
 # Add graphviz
 RUN apt-get update && apt-get install -y graphviz
-
-
-# Add praatio
 
 #----- Cleaning up package manager
 RUN apt-get clean autoclean && \
