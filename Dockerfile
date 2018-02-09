@@ -103,7 +103,10 @@ RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/
     mv mo /usr/local/bin
 
 # Add graphviz
-RUN apt-get update && apt-get install -y graphviz
+RUN apt-get update && apt-get install -y \
+    graphviz
+    vim \
+    nano
 
 #----- Cleaning up package manager
 RUN apt-get clean autoclean && \
