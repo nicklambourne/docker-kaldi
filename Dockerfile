@@ -39,6 +39,13 @@ RUN apt-get update && apt-get install -y  \
     pip install tornado && \
     ln -s /usr/bin/python2.7 /usr/bin/python ; ln -s -f bash /bin/sh
 
+# Add sox and graphviz for kaldi, vim and nano to edit scripts
+RUN apt-get update && apt-get install -y \
+    sox \
+    graphviz \
+    vim \
+    nano
+
 #------ Kaldi ----
 WORKDIR /
 
@@ -79,9 +86,6 @@ RUN apt-get install -y python3-dev python3-pip && \
     pip3.6 install git+https://github.com/jiaaro/pydub.git@master && \
     pip3.6 install git+https://github.com/dopefishh/pympi.git@master
 
-# Add sox
-RUN apt-get update && apt-get install -y sox
-
 # Add a task runner
 RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
     tar xzf task_1.3.1_linux_x64.tar.gz && \
@@ -97,16 +101,11 @@ RUN apt-get install -y nodejs build-essential npm && \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g xml-js
 
-# Add moutsache templates as mo
+# Add moustache templates as mo
 RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo && \
     chmod +x mo && \
     mv mo /usr/local/bin
 
-# Add graphviz
-RUN apt-get update && apt-get install -y \
-    graphviz \
-    vim \
-    nano
 
 #----- Cleaning up package manager
 RUN apt-get clean autoclean && \
