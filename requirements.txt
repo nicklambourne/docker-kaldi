@@ -2,3 +2,7 @@ numpy
 pydub
 pympi-ling
 wave
+nltk
+praatio
+pytest
+langid

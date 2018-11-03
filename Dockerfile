@@ -73,9 +73,9 @@ RUN apt-get install gawk && \
 WORKDIR /tmp
 
 # Add python 3.6
-RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
-    tar xvf Python-3.6.1.tgz && \
-    cd Python-3.6.1 && \
+RUN wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz && \
+    tar xvf Python-3.6.6.tgz && \
+    cd Python-3.6.6 && \
     ./configure --enable-optimizations && \
     make -j8 && \
     make altinstall
@@ -84,7 +84,7 @@ RUN wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
 RUN apt-get install -y python3-dev python3-pip && \
     pip3 install numpy pympi-ling praatio && \
     pip3.6 install git+https://github.com/jiaaro/pydub.git@master && \
-    pip3.6 install git+https://github.com/dopefishh/pympi.git@master
+    pip3.6 install git+https://github.com/dopefishh/pympi.git@master &&
 
 # Add a task runner
 RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
@@ -112,7 +112,7 @@ RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pwd && git clone https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
+RUN pwd && git clone -b refactor https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
 
 WORKDIR /kaldi-helpers
 
