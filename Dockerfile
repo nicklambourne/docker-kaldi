@@ -82,9 +82,7 @@ RUN wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz && \
 
 # Add python packages and their dependencies
 RUN apt-get install -y python3-dev python3-pip && \
-    pip3 install numpy pympi-ling praatio && \
-    pip3.6 install git+https://github.com/jiaaro/pydub.git@master && \
-    pip3.6 install git+https://github.com/dopefishh/pympi.git@master &&
+    pip3 install numpy pympi-ling praatio pydub
 
 # Add a task runner
 RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
@@ -108,9 +106,9 @@ RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/
 
 
 #----- Cleaning up package manager
-RUN apt-get clean autoclean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get clean autoclean && \
+#    apt-get autoremove -y && \
+#    rm -rf /var/lib/apt/lists/*
 
 RUN pwd && git clone -b refactor https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
 
