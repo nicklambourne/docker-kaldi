@@ -1,9 +1,10 @@
 #######################################################################
-# Dockerfile to build Kaldi (speech recognition engine container image
-# Based on Ubuntu + SRILM
+# Dockerfile to build Kaldi (speech recognition engine container      #
+# image and                                                           #
+# Based on Ubuntu + SRILM                                             #
 #######################################################################
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ################## BEGIN INSTALLATION ######################
 
@@ -19,8 +20,8 @@ RUN apt-get update && apt-get install -y  \
     subversion \
     curl \
     wget \
-    libjson0 \
-    libjson0-dev \
+    libjson-c3 \
+    libjson-c-dev \
     zlib1g-dev \
     bzip2 \
     gsl-bin libgsl-dev \
@@ -70,7 +71,7 @@ RUN apt-get install gawk && \
     chmod +x env.sh && \
     source ./env.sh
 
-RUN apt-get install -y libssl-dev
+RUN apt-get install -y libssl-dev libsqlite3-dev libbz2-dev
 
 WORKDIR /tmp
 
@@ -78,7 +79,7 @@ WORKDIR /tmp
 RUN wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz && \
     tar xvf Python-3.6.6.tgz && \
     cd Python-3.6.6 && \
-    ./configure --enable-optimizations && \
+    ./configure --enable-optimizations --enable-loadable-sqlite-extensions && \
     make -j8 && \
     make altinstall
 
@@ -97,7 +98,7 @@ RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
     mv jq-linux64 /usr/local/bin/jq
 
 # Add node, npm and xml-js
-RUN apt-get install -y nodejs build-essential npm libsqlite3-dev && \
+RUN apt-get install -y nodejs build-essential npm && \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g xml-js
 
@@ -106,13 +107,14 @@ RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/
     chmod +x mo && \
     mv mo /usr/local/bin
 
-
 #----- Cleaning up package manager
 #RUN apt-get clean autoclean && \
 #    apt-get autoremove -y && \
 #    rm -rf /var/lib/apt/lists/*
 
 RUN pwd && git clone -b refactor https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
+
+RUN cd /kaldi-helpers && python3.6 setup.py install
 
 WORKDIR /kaldi-helpers
 
