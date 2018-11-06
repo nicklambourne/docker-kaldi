@@ -3,7 +3,7 @@
 # Based on Ubuntu + SRILM
 #######################################################################
 
-FROM debian:8
+FROM ubuntu:16.04
 
 ################## BEGIN INSTALLATION ######################
 
@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y  \
     libjson0-dev \
     zlib1g-dev \
     bzip2 \
-    gsl-bin libgsl0ldbl \
+    gsl-bin libgsl-dev \
     libatlas3-base \
     glpk-utils \
     libglib2.0-dev
@@ -56,7 +56,7 @@ RUN echo "===> install Kaldi (latest from source)"  && \
     ./install_portaudio.sh && \
     cd /kaldi/src && ./configure --shared && \
     sed -i '/-g # -O0 -DKALDI_PARANOID/c\-O3 -DNDEBUG' kaldi.mk && \
-    make depend && make && \
+    make depend  && make && \
     cd /kaldi/src/online && make depend && make
 
 COPY srilm-1.7.2.tar.gz /kaldi/tools/srilm.tgz
@@ -70,6 +70,8 @@ RUN apt-get install gawk && \
     chmod +x env.sh && \
     source ./env.sh
 
+RUN apt-get install -y libssl-dev
+
 WORKDIR /tmp
 
 # Add python 3.6
@@ -81,7 +83,7 @@ RUN wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz && \
     make altinstall
 
 # Add python packages and their dependencies
-RUN apt-get install -y python3-dev python3-pip && \
+RUN apt-get install -y python3-dev python3-pip python3-certifi && \
     pip3.6 install numpy pympi-ling praatio pydub
 
 # Add a task runner
@@ -95,7 +97,7 @@ RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
     mv jq-linux64 /usr/local/bin/jq
 
 # Add node, npm and xml-js
-RUN apt-get install -y nodejs build-essential npm && \
+RUN apt-get install -y nodejs build-essential npm libsqlite3-dev && \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g xml-js
 
