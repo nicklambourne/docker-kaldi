@@ -6,7 +6,7 @@
 
 FROM ubuntu:18.04
 
-################## BEGIN INSTALLATION ######################
+########################## BEGIN INSTALLATION #########################
 
 RUN apt-get update && apt-get install -y  \
     autoconf \
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y  \
     zlib1g-dev \
     bzip2 \
     gsl-bin libgsl-dev \
-    libatlas3-base \
+    libatlas-base-dev \
     glpk-utils \
     libglib2.0-dev
 
@@ -34,8 +34,7 @@ RUN apt-get update && apt-get install -y  \
     python-pip \
     python-yaml \
     python-simplejson \
-    python-gi \
-    python-software-properties && \
+    python-gi && \
     pip install ws4py==0.3.2 && \
     pip install tornado && \
     ln -s /usr/bin/python2.7 /usr/bin/python ; ln -s -f bash /bin/sh
@@ -45,7 +44,8 @@ RUN apt-get update && apt-get install -y \
     sox \
     graphviz \
     vim \
-    nano
+    nano \
+    zsh
 
 #------ Kaldi ----
 WORKDIR /
@@ -98,14 +98,14 @@ RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
     mv jq-linux64 /usr/local/bin/jq
 
 # Add node, npm and xml-js
-RUN apt-get install -y nodejs build-essential npm && \
-    ln -s /usr/bin/nodejs /usr/bin/node && \
-    npm install -g xml-js
+#RUN apt-get install -y nodejs build-essential npm && \
+#    ln -s /usr/bin/nodejs /usr/bin/node && \
+#    npm install -g xml-js
 
 # Add moustache templates as mo
-RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo && \
-    chmod +x mo && \
-    mv mo /usr/local/bin
+#RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo && \
+#    chmod +x mo && \
+#    mv mo /usr/local/bin
 
 #----- Cleaning up package manager
 #RUN apt-get clean autoclean && \
