@@ -98,14 +98,14 @@ RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
     mv jq-linux64 /usr/local/bin/jq
 
 # Add node, npm and xml-js
-#RUN apt-get install -y nodejs build-essential npm && \
-#    ln -s /usr/bin/nodejs /usr/bin/node && \
-#    npm install -g xml-js
+RUN apt-get install -y nodejs build-essential npm && \
+    #ln -s /usr/bin/nodejs /usr/bin/node && \
+    npm install -g xml-js
 
 # Add moustache templates as mo
-#RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo && \
-#    chmod +x mo && \
-#    mv mo /usr/local/bin
+RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo && \
+    chmod +x mo && \
+    mv mo /usr/local/bin
 
 #----- Cleaning up package manager
 #RUN apt-get clean autoclean && \
