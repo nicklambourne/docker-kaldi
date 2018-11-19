@@ -88,9 +88,7 @@ RUN apt-get install -y python3-dev python3-pip python3-certifi && \
     pip3.6 install numpy pympi-ling praatio pydub
 
 # Add a task runner
-RUN wget https://github.com/go-task/task/releases/download/v1.3.1/task_1.3.1_linux_x64.tar.gz && \
-    tar xzf task_1.3.1_linux_x64.tar.gz && \
-    mv task /usr/local/bin/task
+RUN curl -s https://taskfile.org/install.sh | sh && mv ./bin/task /bin/
 
 # Add jq
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
