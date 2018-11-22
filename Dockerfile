@@ -110,7 +110,7 @@ RUN curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/
 #    apt-get autoremove -y && \
 #    rm -rf /var/lib/apt/lists/*
 
-RUN pwd && git clone -b refactor https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
+RUN pwd && git clone -b master https://github.com/CoEDL/kaldi-helpers.git /kaldi-helpers
 
 RUN cd /kaldi-helpers && python3.6 setup.py install
 
